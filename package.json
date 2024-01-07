@@ -1,0 +1,99 @@
+{
+  "name": "ai-localization",
+  "displayName": "ai-localization",
+  "description": "Chat GPT based localization files translator.",
+  "publisher": "VladanTomic",
+  "author": "Vladan Tomić",
+  "version": "1.0.1",
+  "repository": "https://github.com/tomicvladan/ai-localization.git",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-localization.translateAll",
+        "title": "Translate All"
+      },
+      {
+        "command": "ai-localization.translateMissing",
+        "title": "Translate Missing"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceFilename =~ /.\\.json/",
+          "command": "ai-localization.translateAll",
+          "alt": "ai-localization.translateAll"
+        },
+        {
+          "when": "resourceFilename =~ /.\\.json/",
+          "command": "ai-localization.translateMissing",
+          "alt": "ai-localization.translateMissing"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Localization",
+      "properties": {
+        "ai-localization.openAIKey": {
+          "type": "string",
+          "default": "",
+          "description": "Set your OpenAI API key."
+        },
+        "ai-localization.maxTranslationsPerResponse": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of translated phrases per one response."
+        },
+        "ai-localization.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "enum": [
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-1106",
+            "gpt-4",
+            "gpt-4-32k-0613"
+          ],
+          "descriptions": "GPT model."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "@types/sinon": "^17.0.2",
+    "@types/vscode": "^1.83.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@vscode/test-electron": "^2.3.4",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "sinon": "^17.0.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "openai": "^4.22.1"
+  }
+}
