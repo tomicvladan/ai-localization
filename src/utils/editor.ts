@@ -34,8 +34,12 @@ function encodeNewLine(text: string): string {
   return text.replace(/\n/g, "\\n");
 }
 
-export function encodeDoubleQuotes(text: string): string {
+export function decodeDoubleQuotes(text: string): string {
   return text.replace(/([^\\])"/gm, '$1"');
+}
+
+export function encodeDoubleQuotes(text: string): string {
+  return text.replace(/([^\\])"/gm, '$1\\"');
 }
 
 export function replaceDoubleQuotes(text: string): string {
@@ -50,7 +54,7 @@ function convertEntriesToText(entries: Entry[]): string {
   const tab = getTabSpace();
   return entries.reduce(
     (text, { key, value }, i) =>
-      (text += `${tab}"${key}": "${encodeNewLine(value)}"${
+      (text += `${tab}"${key}": "${encodeNewLine(encodeDoubleQuotes(value))}"${
         i < entries.length - 1 ? "," : ""
       }\n`),
     ""
@@ -73,5 +77,5 @@ export function addEntriesToJson(text: string, entries: Entry[]): string {
 }
 
 export function createJsonFromEntries(entries: Entry[]): string {
-  return `{\n${convertEntriesToText(entries)}}`;
+  return `{\n${convertEntriesToText(entries)}}\n`;
 }

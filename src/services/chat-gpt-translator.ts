@@ -12,7 +12,7 @@ import {
 } from "../utils/locales";
 import { Progress, ProgressCallback } from "./progress";
 import { Request } from "../model/request";
-import { encodeDoubleQuotes, replaceDoubleQuotes } from "../utils/editor";
+import { decodeDoubleQuotes, replaceDoubleQuotes } from "../utils/editor";
 
 export type GPTModel =
   | "gpt-3.5-turbo"
@@ -133,7 +133,7 @@ export class ChatGPTTranslator extends LLMTranslator {
     let translations: any = {};
 
     try {
-      translations = JSON.parse(encodeDoubleQuotes(response));
+      translations = JSON.parse(decodeDoubleQuotes(response));
     } catch (error) {
       console.warn("Cannot parse response from Chat GPT");
     }
