@@ -6,6 +6,14 @@
   "author": "Vladan Tomić",
   "version": "1.0.1",
   "repository": "https://github.com/tomicvladan/ai-localization.git",
+  "keywords": [
+    "translation",
+    "AI",
+    "localization",
+    "translator",
+    "language",
+    "Chat GPT"
+  ],
   "engines": {
     "vscode": "^1.83.0"
   },
