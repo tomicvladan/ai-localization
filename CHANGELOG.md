@@ -1,9 +1,20 @@
 # Change Log
 
-All notable changes to the "ai-localization" extension will be documented in this file.
+#### 1.0.2 (2024-03-06)
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+##### Chores
 
-## [Unreleased]
+*  chore: keywords added
+*  chore: gif added
 
-- Initial release
+##### Bug Fixes
+
+*  fix: double quotes in json output
+
+#### 1.0.1 (2024-01-07)
+
+##### New Features
+
+*  initial app (6edb633b)
+
+
