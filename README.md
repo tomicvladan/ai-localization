@@ -2,6 +2,8 @@
 
 VS Code extension for easily translating localization files using Chat GPT.
 
+<img src="docs/images/demo.gif" width=75%>
+
 ## Requirements
 
 **Setting OpenAI API key**
