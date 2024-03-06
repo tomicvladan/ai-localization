@@ -4,7 +4,7 @@
   "description": "Chat GPT based localization files translator.",
   "publisher": "VladanTomic",
   "author": "Vladan Tomić",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": "https://github.com/tomicvladan/ai-localization.git",
   "keywords": [
     "translation",
